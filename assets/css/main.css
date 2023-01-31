@@ -2037,6 +2037,22 @@ input, select, textarea {
 			font-family: 'Font Awesome 5 Brands';
 		}
 
+	.imagen {
+		border-radius: 0.35em;
+		border: 0;
+		display: inline-block;
+		position: relative;
+		object-fit: fill;
+		width: 25%;
+	}
+
+		.imagen.fit {
+			display: block;
+			margin: 0 0 2em 0;
+			width: 100%;
+			
+		}
+
 /* Image */
 
 	.image {
