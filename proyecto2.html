@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic - Phantom by HTML5 UP</title>
+		<title>Análisis del mercado inmobiliario</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets2/css/main.css" />
@@ -20,10 +20,7 @@
 					<header id="header">
 						<div class="inner">
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
-								</a>
+
 
 							<!-- Nav -->
 								<nav>
@@ -37,67 +34,106 @@
 
 				<!-- Menu -->
 					<nav id="menu">
-						<h2>Menu</h2>
+						<h2>Menú</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Ipsum veroeros</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a href="index.html">Proyectos</a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Proyecto2</h1>
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<h1>Análisis del Mercado Inmobiliario en CDMX</h1>
+							<p>La Ciudad de México es el hogar de millones de personas, compuesta por incontables casas y edificios. 
+								El autor de este proyecto, como adulto joven que pronto buscará un
+								hogar propio, está interesado en entender qué tipo de vivienda sería adecuada
+								a sus necesidades y presupuesto.
+								Por eso, en este proyecto analicé el mercado inmobiliario de la 
+								Ciudad de México. El propósito de este trabajo es crear un modelo que permita
+								predecir el precio comercial de un imueble con base en sus características.
+								
+								Para esto, me basé en las propiedades
+								publicadas en <a href="https://www.lamudi.com.mx/">Lamudi.com</a>. 
+								A continuación presento los hallazgos de este estudio.
+
+								<img src="images/thumbs/cdmx.jpg" alt="Hola" class="image fit img">
+							</p>
+							<p>
+								<h3>Preguntas:</h3>
+								1. Cuál es el precio medio de un inmueble en cada una de las delegaciones de la Ciudad de México?
+								2. Qué porcentaje del valor del inmueble medio se cobra de renta?
+								3. Cuáles son los hotspots más caros por metro cuadrado para rentar un inmueble en la ciudad?
+								4. 
+
+								5. Predicción de precio de un inmueble (simulador con crédito hipotecario)
+
+							</p>
+							<h2>1. Introducción</h2>
+							<p>Para recabar datos acerca del mercado inmobiliario en la ciudad, utilicé
+								BeautifulSoup para obtener las propiedades publicadas tanto a la venta
+								como a la renta. Luego, con Pandas, limpié y ordené la información. Después de
+								esto, quedó un conjunto de datos con las siguientes frecuencias. 
+							</p>
+							<img src="images2/cuenta_inmuebles_por_tipo.png"  alt='Cuenta' class="image fit">
+							<p></p>
+							<p>Tenemos un total de 63232 propiedades, incluyendo renta y venta. La gran mayoría de los departamentos publicados en la plataforma
+								se concentra en las alcaldías Benito Juárez, Miguel Hidalgo, Cuauhtémoc,
+								Cuajimalpa y Álvaro Obregón. Por otra parte, las casas se concentran más
+								en Álvaro Obregón, Tlalpan y Coyoacán. Además, vemos que en la mayoría de las demarcaciones
+								hay más departamentos que casas, pero Tlalpan, Magdalena Contreras, Iztapalapa
+								y Xochimilco son excepción.
+
+								Cabe recalcar que descartamos las alcaldías Milpa
+								Alta y Tláhuac de este análisis porque el número de inmuebles es despreciable. 
+								Ahora que sabemos con cuántos inmuebles estamos trabajando, podemos
+							comenzar a hacernos preguntas acerca de la industria inmobiliaria
+							y responderlas.
+
+							<h2>2. ¿Cuáles son las delegaciones más caras para comprar una propiedad?</h2>
+							<p>
+								La Ciudad de México tiene zonas que se ajustan a distintos presupuestos.
+								Iztacalco es la alcaldía con precios más accesibles, ya que ahí un departamento
+								de precio medio cuesta 1.9 millones de pesos, mientras que por una casa tendríamos
+								que invertir cerca de 2.5 millones. Otras demarcaciones con precios parecidos son Iztapalapa y Vensutiano Carranza. 
+						
+
+
+							</p>
+							<img src="images2/precio_medio_por_tipo.png"  alt='Cuenta' class="image fit">
+							<p></p>
+							<p>
+								Luego, tenemos partes de la ciudad que se encuentran más bien en un precio moderado.
+								Una casa en Coyoacán cuesta 6.2 millones, mientras que un departamento vale 3.4, lo cual
+								es muy similar en Tlalpan, donde estas cantidades son 5.9 y 3.6 millones, respectivamente.
+		
+							</p>
+							<p>
+								Finalmente, nos encontramos con las delegaciones más caras de la ciudad:
+								Cuajimalpa, Álvaro Obregón y Miguel Hidalgo. Cuando se trata de comprar 
+								una casa en esta última, el precio se dispara a la gran cantidad de 
+								18 millones de pesos, lo cual está muy por encima de lo que costaría
+								en cualquier otra alcaldía. Los departamentos, por su parte, son casi igual 
+								de costosos ahí y en Cuajimalpa, con un valor medio de 8 millones.
+
+		
+							</p>
+							<p>
+								Sin embargo, algo que debemos tomar en cuenta es la variabilidad de los precios. Si bien un departamento de precio medio en
+								Miguel Hidalgo es bastante costoso, también podremos encontrar propiedades de 
+								todos los precios. A continuación se muestra un histograma de precios de 
+								las tres delegaciones más caras.
+							</p>
+							<img src="images2/distribucion_mas_caras.png" alt="ola", class="image fit">
+							
+							</p>
+
+							</p>
+
+							
+							
 						</div>
 					</div>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<section>
-								<h2>Get in touch</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-										<div class="field">
-											<textarea name="message" id="message" placeholder="Message"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send" class="primary" /></li>
-									</ul>
-								</form>
-							</section>
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
-								</ul>
-							</section>
-							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</footer>
 
 			</div>
 
@@ -107,6 +143,7 @@
 			<script src="assets2/js/breakpoints.min.js"></script>
 			<script src="assets2/js/util.js"></script>
 			<script src="assets2/js/main.js"></script>
+		
 
 	</body>
 </html>
