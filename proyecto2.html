@@ -44,39 +44,33 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Análisis del Mercado Inmobiliario en CDMX</h1>
+							<p>Por Omar Polanco Cázares. 17/02/2023</p>
 							<p>La Ciudad de México es el hogar de millones de personas, compuesta por incontables casas y edificios. 
-								El autor de este proyecto, como adulto joven que pronto buscará un
-								hogar propio, está interesado en entender qué tipo de vivienda sería adecuada
-								a sus necesidades y presupuesto.
-								Por eso, en este proyecto analicé el mercado inmobiliario de la 
+								Como adulto joven que pronto buscará un
+								hogar propio, estoy interesado en entender qué tipo de vivienda sería adecuada
+								a mis necesidades y presupuesto.
+								Por eso, en este proyecto analicé el <b> mercado inmobiliario</b> de la 
 								Ciudad de México. El propósito de este trabajo es crear un modelo que permita
-								predecir el precio comercial de un imueble con base en sus características.
+								<b> predecir el precio comercial</b> de un imueble con base en sus características.
 								
 								Para esto, me basé en las propiedades
 								publicadas en <a href="https://www.lamudi.com.mx/">Lamudi.com</a>. 
 								A continuación presento los hallazgos de este estudio.
 
-								<img src="images/thumbs/cdmx.jpg" alt="Hola" class="image fit img">
-							</p>
-							<p>
-								<h3>Preguntas:</h3>
-								1. Cuál es el precio medio de un inmueble en cada una de las delegaciones de la Ciudad de México?
-								2. Qué porcentaje del valor del inmueble medio se cobra de renta?
-								3. Cuáles son los hotspots más caros por metro cuadrado para rentar un inmueble en la ciudad?
-								4. 
+								<p></p>
 
-								5. Predicción de precio de un inmueble (simulador con crédito hipotecario)
-
+								<img src="images/thumbs/cdmx.jpg" alt="Hola" id="imagen_principal">
 							</p>
+							
 							<h2>1. Introducción</h2>
 							<p>Para recabar datos acerca del mercado inmobiliario en la ciudad, utilicé
-								BeautifulSoup para obtener las propiedades publicadas tanto a la venta
-								como a la renta. Luego, con Pandas, limpié y ordené la información. Después de
+								<b> BeautifulSoup</b> para obtener las propiedades publicadas tanto a la venta
+								como a la renta. Luego, usando <b> Pandas</b>, limpié y ordené la información. Después de
 								esto, quedó un conjunto de datos con las siguientes frecuencias. 
 							</p>
 							<img src="images2/cuenta_inmuebles_por_tipo.png"  alt='Cuenta' class="image fit">
 							<p></p>
-							<p>Tenemos un total de 63232 propiedades, incluyendo renta y venta. La gran mayoría de los departamentos publicados en la plataforma
+							<p>Tenemos un total de <b> 63,232</b> propiedades, incluyendo renta y venta. La gran mayoría de los departamentos publicados en la plataforma
 								se concentra en las alcaldías Benito Juárez, Miguel Hidalgo, Cuauhtémoc,
 								Cuajimalpa y Álvaro Obregón. Por otra parte, las casas se concentran más
 								en Álvaro Obregón, Tlalpan y Coyoacán. Además, vemos que en la mayoría de las demarcaciones
@@ -89,7 +83,7 @@
 							comenzar a hacernos preguntas acerca de la industria inmobiliaria
 							y responderlas.
 
-							<h2>2. ¿Cuáles son las delegaciones más caras para comprar una propiedad?</h2>
+							<h2>2. ¿Cuáles son las delegaciones más caras y más accesibles para comprar una propiedad?</h2>
 							<p>
 								La Ciudad de México tiene zonas que se ajustan a distintos presupuestos.
 								Iztacalco es la alcaldía con precios más accesibles, ya que ahí un departamento
@@ -103,29 +97,216 @@
 							<p></p>
 							<p>
 								Luego, tenemos partes de la ciudad que se encuentran más bien en un precio moderado.
-								Una casa en Coyoacán cuesta 6.2 millones, mientras que un departamento vale 3.4, lo cual
+								Una casa en <b>Coyoacán</b> cuesta <b>6.2 millones</b>, mientras que un departamento vale 3.4, lo cual
 								es muy similar en Tlalpan, donde estas cantidades son 5.9 y 3.6 millones, respectivamente.
 		
 							</p>
 							<p>
-								Finalmente, nos encontramos con las delegaciones más caras de la ciudad:
-								Cuajimalpa, Álvaro Obregón y Miguel Hidalgo. Cuando se trata de comprar 
-								una casa en esta última, el precio se dispara a la gran cantidad de 
-								18 millones de pesos, lo cual está muy por encima de lo que costaría
+								Finalmente, nos encontramos con las delegaciones <b>más caras</b> de la ciudad:
+								<b>Cuajimalpa, Álvaro Obregón y Miguel Hidalgo</b>. Cuando se trata de comprar 
+								una casa en esta última, el precio se dispara a una cantidad de casi
+								<b>18 millones</b> de pesos, lo cual está muy por encima de lo que costaría
 								en cualquier otra alcaldía. Los departamentos, por su parte, son casi igual 
 								de costosos ahí y en Cuajimalpa, con un valor medio de 8 millones.
 
 		
 							</p>
 							<p>
-								Sin embargo, algo que debemos tomar en cuenta es la variabilidad de los precios. Si bien un departamento de precio medio en
+								Sin embargo, algo que debemos tomar en cuenta es la <b>variabilidad de los precios</b>. Si bien un departamento de precio medio en
 								Miguel Hidalgo es bastante costoso, también podremos encontrar propiedades de 
-								todos los precios. A continuación se muestra un histograma de precios de 
+								todos los precios. A continuación se muestra la distribución de los precios de 
 								las tres delegaciones más caras.
 							</p>
 							<img src="images2/distribucion_mas_caras.png" alt="ola", class="image fit">
-							
+							<p></p>
+							<p>
+								Las tres distribuciones tienen una moda bastante parecida, debajo de los 
+								<b>5 millones</b> de pesos. Sin embargo, <b>Álvaro Obregón</b> tiene mayor cantidad de propiedades
+								de valor relativamente accesible, y menor cantidad con un valor alto en comparación
+								con las otras delegaciones. El <b>41%</b> de los inmuebles en esa delegación cuestan
+								menos de <b>5 millones</b> de pesos. En comparación, en <b>Miguel Hidalgo</b> solo el <b>32%</b> se
+								encuentra en ese rango de precio, mientras que el <b>28%</b> vale entre <b>10 y 20 millones</b> de pesos.
 							</p>
+							<p></p>
+							<p>
+								Así, podemos encontrar qué porcentaje de los inmuebles de cada alcaldía se encuentran
+								en cierto rango de precios. 
+								<p></p>
+								<img src="images2/porcentaje_precios.png" alt="ola" class="image fit">
+							</p>
+							<p>
+								<b>Venustiano Carranza</b>  es la alcaldía con mayor porcentaje de inmuebles de menos de 
+								<b>2.5 millones</b> de pesos, ya que cerca del <b>80%</b> de las propiedades caen en ese rango.  
+								En <b>Azcapotzalco</b>, ese número es <b>60%</b>. 
+								<b>Tlalpan</b> y <b>Coyoacán</b> son las alcaldías con una distribución relativamente 
+								más uniforme, donde alrededor del <b>20%</b> de las propiedades cuestan menos de <b>2.5 millones</b>,
+								mismo porcentaje que las que tienen un valor entre <b>5 y 10 millones</b>.
+							</p>
+							<p>
+								Es debido a estas razones que concluimos que las tres delegaciones <b>más caras</b>
+								para adquirir una propiedad en la Ciudad de México son <b>Miguel Hidalgo, Cuajimalpa y Álvaro Obregón</b>. 
+								Un departamento de precio medio en esas tres alcaldías cuesta <b>6.5 millones</b>, mientras
+								que una casa, <b>12.5 millones</b>. Por otra parte, las delegaciones más accesibles son
+								<b>Venustiano Carranza, Iztapalapa, Iztacalco y Azcapotzalco</b>. Una casa de valor medio
+								en esas alcaldías cuesta <b>2.2 millones</b>, mientras que un departamento, <b>2.8 millones</b>.
+							</p>
+							</p>
+
+							</p>
+							<h2>2. ¿Cuánto cuesta rentar un departamento en la CDMX?</h2>
+							<p>
+								Ahora que hemos hablado acerca de cuánto cuesta comprar una propiedad
+								en la ciudad, comenzaremos a analizar cuánto cuesta <b>rentar</b> Específicamente, hablaremos
+								sobre <b>departamentos</b>. Primero, hay que
+								aclarar que los precios de la renta en CDMX tienen un amplio rango, dependiendo
+								del lugar donde se encuentre el edificio, la extensión de la construcción, entre otros factores.
+								A continuación vemos la distribución de los precios de renta de departamentos y cuartos en toda la ciudad.
+								<p></p>
+								<img src="images2\distribucion_renta.png" alt="ola" class="image fit">
+							</p>
+							<p>
+								Encontramos que hay rentas tan bajas como <b>3 mil</b> pesos mensuales, así como hay
+								departamentos que cobran más de <b>150 mil</b>. Sin embargo, la propiedad de precio 
+								medio cuesta <b>25,800</b>mensuales. Ahora, cuando se busca rentar, es importante considerar
+								cuánto se está dispuesto a pagar, pero también lo que se está recibiendo a cambio de ese precio.
+								Es distinto pagar 20 mil pesos por un inmueble con un cuarto, que pagarlos por un lugar
+								con 4 cuartos que se pueden compartir con otras personas. El precio medio de un cuarto es de 
+								<b>13 mil</b> pesos mensuales, y solamente <b>una cuarta parte</b> de los cuartos cuesta menos de <b>9 mil</b> pesos.
+
+							</p>
+							<p></p>
+							<p>
+								No solo es importante considerar cuántos cuartos hay en un departamento, sino que también
+								se debe tomar en cuenta qué tan <b>espacioso</b> es el inmueble. El <b>precio medio</b> de 
+								renta por metro cuadrado en las delegaciones se observa en la siguiente gráfica, contrastado
+								con el tamaño medio de un departamento en esa delegación.
+								<p></p>
+								<img src="images2\precio_vs_espacio.png" alt="ola" class="image fit">
+
+
+								<p></p>
+								Encontramos, de nuevo, que <b>Miguel Hidalgo</b> es la delegación más costosa, con un precio
+								medio por metro cuadrado de <b>288 pesos mensuales</b> y un tamaño medio de <b>120 metros</b>. esto significa que, si quisiéramos
+								rentar un departamento de 50 metros cuadrados, pagaríamos poco menos de 15 mil pesos mensuales por él.
+								Después, están Cuauhtémoc y Benito Juárez, ambas con costos superiores a los 200 pesos. 
+								En el otro extremo, el departamento medio en Xochimilco cuesta <b>120 pesos mensuales</b> por metro cuadrado. 
+								Resulta interesante el caso de <b>Magdalena Contreras</b>, que tiene un precio medio por metro
+								cercano al de Iztacalco, pero tiene departamentos bastante más amplios, de más de <b>110 metros cuadrados</b>.
+							</p>
+							<p></p>
+							<h2>3. ¿Es más caro rentar o comprar?</h2>
+							<p>
+								Al mudarnos a una nueva residencia, podemos comprar o rentar. Esto dependerá
+								de nuestro presupuesto, nuestras metas financieras y nuestros planes de vida, entre
+								otros factores. Podemos analizar los precios de cada una de estas operaciones
+								para obtener una idea sobre qué nos conviene más. En cada una de las alcaldías de la ciudad, 
+								tomamos el precio medio de renta de las propiedades. Luego, dividimos esto entre
+								el precio medio de la venta. Así, obtuvimos qué <b>porcentaje del valor</b> del inmueble medio se 
+								cobra mensualmente de <b>renta</b>. Aquí los resultados.
+								<p></p>
+								<img src="images2\porcentaje_renta.png" alt="ola" class="image fit">
+								<p></p>
+								<p>
+									Encontramos que las delegaciones donde se cobra mayor porcentaje del valor del inmueble
+									como renta para las casas son Iztacalco y Vensutiano Carranza, donde se cobra más del 
+									<b>0.8 por ciento mensual</b>. Para los departamentos, las alcaldías con el mayor porcentaje
+									son Xochimilco y de nuevo Iztacalco, con alrededor de un <b>0.6 por ciento</b>. 
+									Resulta interesante que las delegaciones que anteriormente habíamos concluido son las 
+									más accesibles para comprar propiedades, como Vensutiano Carranza, Gustavo A. Madero
+									e Iztacalco, también son las que <b>mayor porcentaje de renta</b> cobran con respecto al valor
+									del inmueble. De forma contraria, las delegaciones con propiedades más caras a la venta, 
+									es decir Miguel Hidalgo, Álvaro Obregón y Cuajimalpa, se encuentran entre las que <b>
+										menor
+									porcentaje cobran.
+									</b>
+									<p></p>
+									<p>
+										Siguiendo esta idea, calculamos la correlación entre el precio medio por tipo de inmueble de cada 
+										alcaldía y el porcentaje del valor que se cobra de renta. Encontramos una <b>correlación de -0.31</b>, que si bien no es fuerte, resulta interesante. 
+										Esto podría indicar que, por alguna razón, un menor valor en los precios de las viviendas de 
+										una alcaldía esté asociado con un mayor porcentaje de cobro de renta en comparación con el precio de venta.
+										Sin embargo, sin hacer más investigación al respecto, no se puede concluir con seguridad.
+									</p>
+
+									<p>
+										Ahora, analizando la decisión entre comprar y rentar, usaremos un ejemplo.
+										Primero, una casa en Iztacalco. En esa alcaldía el precio medio es <b>2,441,300</b> pesos.
+										La renta media es de <b>23,000</b>. Entonces, simulamos un crédito hipotecario
+										con ayuda de la página de <a href="https://phpapps.condusef.gob.mx/condusefhipotecario/" target="_blank">Condusef</a>. 
+										Encontramos un crédito de <b>2,241,300 a 10 años</b>, para el cual necesitamos pagar un enganche de 200,000.
+										Al ver la tabla de amortización, encontramos que se requiere un pago total de <b>34,000 pesos mensuales</b>.
+										Entonces, al final de los diez años, habríamos pagado <b>4,384,520 pesos</b>.
+										
+										Por contraparte, si hubiéramos rentado durante diez años, nuestra renta inicial habría
+										sido de 23,000 pesos. Sin embargo, debemos considerar que las rentas tienden a <b>aumentar en el tiempo</b>.
+										Por tanto, tomaremos en cuenta una inflación del precio de 3 por ciento anual.
+										Entonces, al final del periodo, habríamos pagado un total de <b>3,164,000 pesos</b>.
+
+										Por tanto, en este plazo, la <b>diferencia</b> entre el desembolso por comprar y rentar
+										sería de <b>1,220,520 pesos</b>. Sin embargo, debemos considerar que en el primer caso, tendríamos
+										un inmueble a nuestro nombre, y en el segundo, no.
+
+									</p>
+
+
+
+								</p>
+
+
+
+
+							</p>
+
+
+							<h2>4. Modelo predictivo de precio</h2>
+
+							<p>
+								Una vez que hemos analizado el comportamiento general de los precios de venta y renta, antes de 
+								adquirir o rentar una nueva propiedad, nos gustaría tener una manera de <b>valuarla</b>. Esto 
+								resulta conveniente para saber si el <b>precio</b> que nos está cobrando el actual dueño es <b>justo</b>.
+								Incluso, sería posible encontrar algún inmueble que esté a la venta por debajo del precio de mercado.
+
+								Por esto, utilizamos el algoritmo de <b>K-Nearest neighbors</b> para entrenar un modelo
+								que sea capaz de <b>predecir el precio</b> de una vivienda en función de sus características.
+								Consideramos que este modelo es adecuado porque el precio de un inmueble está influenciado en cierta medida
+								por el precio de las propiedades circundantes. A continuación se presentan los resultados
+								del modelo, tanto para los inmuebles en renta como los que etsán a la venta.
+
+								<p></p>
+								<img src="images2\modelo_resultados.png" alt="ola" class="image fit">
+
+							</p>
+
+							<p>
+								El modelo tiene un coeficiente de determinación relativamente alto para ambos casos.
+								Encontramos que para la <b>venta</b>, el modelo tiene un mejor desempeño cuando se utilizan <b>15 vecinos</b>,
+								que da un coeficiente de <b>0.81</b>. Por su parte, la <b>renta</b> se puede predecir mejor con <b>19 vecinos</b>,
+								lo cual genera un coeficiente de <b>0.79</b>.
+
+
+							</p>
+
+							<h2>5. Conclusión</h2>
+
+							<p>
+								El mercado inmobiliario en la Ciudad de México tiene inmuebles con características y precios
+								considerablemente <b>variados</b>. Sin embargo, hay que considerar qué tan accesible es para 
+								las personas que habitan la ciudad. Si consideramos que el salario mínimo es de alrededor de 200 pesos diarios
+								y la renta mediana de un departamento en una de las alcaldías menos costosas es de alrededor
+								de 8 mil, nos daremos cuenta de que hay gran cantidad de <b>familias que no pueden costear un hogar</b>.
+								Por otra parte, para las personas que pueden pagar renta o incluso una hipoteca es posible 
+								encontrar viviendas de todo tipo, en vecindarios muy distintos y que se acomodan a muchos estilos de vida.
+								Finalmente, es posible, para las personas que tienen la capacidad de ahorrar, el adquirir un departamento
+								y ofrecerlo a la renta, usando ese dinero para ayudar a pagar la hipoteca. Este <b>negocio es redituable</b>, aunque también 
+								tiene sus riesgos. 
+								Esperamos que el modelo desarrollado pueda ser de utilidad para que las personas que 
+								quieran comprar o rentar un inmueble tengan una idea acerca del <b>rango de precio</b> en el que se encuentra, 
+								y así asegurarse de llegar a un <b>trato justo</b> con el ofertante.
+
+
+
+
+
 
 							</p>
 
