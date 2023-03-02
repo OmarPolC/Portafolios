@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Spotify Rock Songs Analysis</title>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets2/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets2/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menú</h2>
+						<ul>
+							<li><a href="index.html">Proyectos</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Spotify Rock Songs Analysis</h1>
+							<p>By Omar Polanco Cázares. 17/02/2023</p>
+							
+							<p>
+								I have always found mysef deeply interested in <b>music</b>. I believe that it is one of the most beautiful forms of expression, whose history dates back to <b>40,000 years ago</b> [1].
+								Ever since its first appearance, music has changed and evolved, shaped by social and historical events. This has not been different in the last fifty years: <b>music is in constant progress</b>. New ways of expressing emotion through sound arise every single day. Human creativity never stops. This is why I find it very interesting to try to find the exact ways in which this art has <b>developed</b> since the decade of the seventies. How melodies, <b>harmonies and rythms</b> have transformed, how new instruments and techniques have created new genres. I find it thrilling to be able to discover how art adapts and grows. Another point, closely related to these, is what elements make a song <b>likable</b>. I want to understand what it is that certain songs have that make people feel good when they listen to them. 
+								Is there any clear way to know <b>which songs are going to be popular</b> based on their metrics, or is there something deeper, that can't be measured numerically?
+
+								<br>
+								[1] Killin, A. (2018). The origins of music: Evidence, theory, and prospects. Music & Science, 1. https://doi.org/10.1177/2059204317751971
+								
+							</p>
+							<img src="images2/guitar.jpg"  alt='Cuenta' id="imagen_principal">
+							<p></p>
+							
+							<h2>1. Introduction</h2>
+							<p>
+								We will explore a dataset containing a sample of <b>1800 rock songs</b> that are available on Spotify. I selected 300 songs from <b>six different decades</b>, 
+								starting in the seventies and all the way to the present day. I collected this information by using <b>Spotify's API</b> and the spotipy Python module. I made a <b>random selection</b> of songs from 
+								each decade by using a search query that 
+								included randomly selected characters and the time period I wanted. Once I had all 1800 songs in a dataframe, I used a function in the spotipy module to obtain the <b>audio features</b> of each one of them. 
+								Finally, I used another function that allows you to find the many smaller segments a song is made up of and the audio metrics within each one of them.
+
+
+							</p>
+
+							<p>The research questions that this report intends to provide answers to are:
+							</p>
+							<ol>
+								<li>Are rock songs from the seventies and from the twenty twenties equally <b>popular</b>?</li>
+								<li>Are rock songs from the seventies and from the twenty twenties equally <b>likely</b> to be <b>featured</b> in a Billboard Hot 100 chart?</li>
+								<li>Is there a <b>linear relationship</b> between <b>popularity</b> and audio features?</b></li>
+								
+
+							</ol>
+							
+							<p></p>
+
+							<p>
+								The dataset looks like this: It contains <b>41 variables</b>. Some of these are variables that help identify what song is in that row: name, artist, album name, and their corresponding identification numbers. 
+								We also have some basic information about the track such as <b>duration</b> in milliseconds, release date and whether it is explicit or not. Then, we have the song's <b>audio features</b>: danceability, energy, key, loudness, 
+								speechiness and acousticness, among others. After that, we have calculated features: <b>tone complexity</b> represents how strongly different tones are present in all segments within a song. I averaged 
+								out the strenght of each one of the twelve tones in every segment of each song. If a song has segments with one very dominant tone and eleven barely noticeable tones, it will have a very low value for this variable. 
+								We also have the <b>variance of the loudness</b> in every segment within a song and the mean section lenght, where one section is a noteciably different part of the track, such as intro or chorus. These metrics 
+								may help us capture how complex a song is. We also have variables representing the relative <b>strenght</b> of each of the twelve <b>tones</b> in the song. Finally, we have a variable that indicates the <b>popularity rating</b> that 
+								Spotify has assigned to that song, and another one where we can see if the song has ever been listed in a <b>Billboard Hot 100</b> chart since it came out.
+
+
+							</p>
+							
+							<p></p>
+							<p> </p>
+
+							<table class="dataframe">
+								<thead>
+								  <tr style="text-align: right;">
+									<th></th>
+									<th>track_id</th>
+									<th>track_name</th>
+									<th>duration</th>
+									<th>popularity</th>
+									<th>explicit</th>
+									<th>artist_id</th>
+									<th>artist_name</th>
+									<th>album_id</th>
+									<th>album_name</th>
+									<th>release_date</th>
+									<th>...</th>
+									<th>E</th>
+									<th>F</th>
+									<th>F_sharp</th>
+									<th>G</th>
+									<th>G_sharp</th>
+									<th>A</th>
+									<th>A_sharp</th>
+									<th>B</th>
+									<th>Decade</th>
+									<th>top_song</th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<th>0</th>
+									<td>6meH4I9A4WZtD3z8hnQKqr</td>
+									<td>From The Morning</td>
+									<td>150850</td>
+									<td>58</td>
+									<td>0</td>
+									<td>5c3GLXai8YOMid29ZEuR9y</td>
+									<td>Nick Drake</td>
+									<td>5mwOo1zikswhmfHvtqVSXg</td>
+									<td>Pink Moon</td>
+									<td>25/02/1972</td>
+									<td>...</td>
+									<td>0.302758</td>
+									<td>0.594458</td>
+									<td>0.441691</td>
+									<td>0.739168</td>
+									<td>0.230356</td>
+									<td>0.235939</td>
+									<td>0.092282</td>
+									<td>0.221884</td>
+									<td>1970's</td>
+									<td>0</td>
+								  </tr>
+								  <tr>
+									<th>1</th>
+									<td>5yrsBzgHkfu2idkl2ILQis</td>
+									<td>You Don't Mess Around with Jim</td>
+									<td>184640</td>
+									<td>61</td>
+									<td>0</td>
+									<td>1R6Hx1tJ2VOUyodEpC12xM</td>
+									<td>Jim Croce</td>
+									<td>3L9sVl5T7UpFK6tNeEiXdy</td>
+									<td>You Don't Mess Around With Jim</td>
+									<td>01/04/1972</td>
+									<td>...</td>
+									<td>0.691369</td>
+									<td>0.284395</td>
+									<td>0.314179</td>
+									<td>0.381449</td>
+									<td>0.381408</td>
+									<td>0.451971</td>
+									<td>0.307919</td>
+									<td>0.414050</td>
+									<td>1970's</td>
+									<td>0</td>
+								  </tr>
+								  <tr>
+									<th>2</th>
+									<td>5dG0VEQ30r7GKylD5rsaEe</td>
+									<td>In Search Of England</td>
+									<td>256693</td>
+									<td>6</td>
+									<td>0</td>
+									<td>2pVMD4bFwl4AyoYyyo51Qg</td>
+									<td>Barclay James Harvest</td>
+									<td>6lNDlPa3ZNtqdLkirnpFxM</td>
+									<td>XII</td>
+									<td>1978</td>
+									<td>...</td>
+									<td>0.262113</td>
+									<td>0.332959</td>
+									<td>0.216197</td>
+									<td>0.347551</td>
+									<td>0.182995</td>
+									<td>0.292866</td>
+									<td>0.273011</td>
+									<td>0.265004</td>
+									<td>1970's</td>
+									<td>0</td>
+								  </tr>
+								</tbody>
+							  </table>
+							  <p>
+								Now, we will start analizing the dataset in order to answer the research questions. 
+							  </p>
+
+							  
+
+							  <h2>2.1 Are rock songs from the seventies and from the twenty twenties equally <b>popular</b>?</h2>
+
+							  <p>
+								Spotify's popularity metric is composed of <b>three main factors</b>: 1. Total streams of a song, 2.How recently a song has been played and 3. The frequency that a track has been played. This means that this number not only considers how many times people have listened to a track, but also <b>when these listens</b> have taken place and whether they were all 
+								in a short timeframe or have evenly been spread accross time.
+
+								This way, if two songs have the same number of listens, but one has been listened recently while the other one was listened ten years ago, the recent song will have a <b>greater rating</b>. Then, using this variable we learn if old songs have remained popular in the present or if they have lost popularity to new songs. The question we will answer is:
+								<br>
+								Is there sufficient evidence to suggest that there is an association between decade and popularity in all the rock songs on Spotify from the 1970's and the 2020's?
+
+							  </p>
+								<p>
+									To do so, we will first take a look at a violin plot comparing the popularity of 
+									songs in both decades. We find that their <b>medians</b> are not too far apart. Popularity of
+									songs from the 70's is very densely located around 60, as <b>50 percent</b> of the songs in our sample
+									have a rating between <b>55 and 65</b>.
+									However, the popularity of rock songs of the 2020's has a <b>bimodal distribution</b>
+									with a lot of tracks concentrating around a score of 60 and many others around zero.
+									This means that, at least in our sample, popularity of rock songs is much more spread out 
+									for songs from this decade than from the seventies.
+									This could be an indication that the mean popularity of these two decades is <b>statistically different</b>.
+
+								</p>
+
+							  <img src="images2/pop_por_decada.png"  alt='Cuenta' class="image fit">
+
+							  <p></p>
+							  <p>
+								Even though our sample distributions, and, arguably our population distirbutions are not normal, 
+								given the fact that we have a decently <b>large sample</b>, we will use a <b>t-test</b> to evaluate this claim. 
+								We will not assume equality of variances. First, we will establish our <b>hypotheses</b>:
+							  </p>
+							  <p>
+								\(H_o: \mu_{1970} = \mu_{2020}\)
+								<br>
+								\(H_a: \mu_{1970} \neq \mu_{2020}\)
+							  </p>
+							  <p>
+
+								We perform the T-test using Scipy. We obtain a p-value of \(3.7x10^{-20}\), 
+								which is virtually zero. Then, we can conclude that there is <b>enough evidence</b> to
+								suggest that the mean popularity of rock songs from the seventies <b>is different</b>
+								than that of rock songs from the current decade.
+								We can also obtain a confidence interval, which indicates that
+								we are 95 percent confident that rock songs from the 1970's score, on average, 
+								between <b>13.9 and 21.1</b> higher on popularity than rock songs from the 2020's.
+							  </p>
+							  <p></p>
+
+							  <h2>2.2 Are rock songs from the seventies and from the twenty-twenties equally <b>likely</b> to be <b>featured</b> in a Billboard Hot 100 chart?</h2>
+
+							  <p>
+								Another way to measure how popular a song is, is finding if it ever made it to a <b>Billboard Hot 100</b> chart. 
+								This can help us find if there was any point in time when the song was considered one of the hundred <b>most popular</b> songs at that moment.
+								The Hot 100 is currently ranked by radio airplay <b>audience impressions</b> as measured by Nielsen BDS, <b>sales data</b> compiled by 
+								Nielsen Soundscan (both at retail and digitally) and <b>streaming activity</b> provided by online music sources. 
+								We now show the percentage of songs from either decade which were featured in a Billboard 100.
+							  
+							  <img src="images2/proporcion_por_decada.png"  alt='Cuenta' class="image fit">
+							</p>
+							  <p>
+								However, 
+								digital sales and activity were, for obvious reasons, not part of the ranking in the seventies. This change
+								in the measurement method <b>could affect</b> the conclusions we derive from our sample, so we should be cautious.
+								We will now establish our hypotheses.
+
+
+							  </p>
+
+							  <p>
+								\(H_o: p_{1970} = p_{2020}\)
+								<br>
+								\(H_a: p_{1970} \neq p_{2020}\)
+
+							  </p>
+							  <p>
+								We proceed to perform a <b>two-proportion test</b>, using the normal approximation. We obtain
+								a p-value of $1.9x10^{-5}$. We also can obtain a confidence interval for the <b>difference</b> of these <b>proportions</b>.
+								Then, we can be 95% confident that the proportion of songs from each decade that
+								are featured on a Billboard 100 differs by between <b>7.5 and 20.4</b> percentage points.
+							  </p>
+
+							  <h2>2.3 Is there a <b>linear relationship</b> between <b>popularity</b> and audio features?</h2>
+
+							  <p>
+								In this section of the report we will deal with the <b>popularity metric</b> of songs. 
+								We will not only use a sample from the seventies and the twenty-twenties as we did in the previous part. 
+								We will use our <b>entire dataset</b>. What we would like to discover is what makes a rock song popular. 
+								Is it possible to find specific <b>characteristics</b> that make people <b>like a track</b>? In order to explore these ideas, 
+								we will use <b>linear regression</b> to find answers to these questions. However, we first need
+								to be able to find out wich variables to use in our model. If we want to find out which
+								features are <b>correlated</b> with popularity in our sample, we can use a heatmap. 
+
+								<p></p>
+								<img src="images2/heatmap.png"  alt='Cuenta' class="image fit">
+							  </p>
+							  <p>
+								We find that our features are <b>not strongly</b> correlated with popularity. This could be an indication that
+								a linear model may not be adequate for this problem. However, we can make sure by creating a <b>linear regression</b> model. 
+
+							  </p>
+							  <p>
+								We use mlxtend's <b>sequential forward selection</b> to find out which features from
+								the dataset produce a better model. The algorithm selects the following features:
+
+								<ol>
+									<li>Speechiness</li>
+									<li>Song from the 1990's</li>
+									<li>Song from the 2000's</li>
+									<li>Song from the 2010's</li>
+								</ol>
+
+								This means that our algorithm found that these 
+								four are a <b>good subset</b> of features if we want to predict popularity, compared to other
+								possible subsets. However, we do have to note that this is not necessarily the
+								best subset. Then, we fit the linear regression model with <b>SciPy</b>, using only the selected
+								variables. We obtain the following equation: <br>
+								<br>
+								\(\hat{popularity} = 53.71 - 41.46 \: (Speechiness) + 6.4804 \: (Decade\: 1990's) + 7.65 \: (Decade\: 2000's) + 9.67 \: (Decade\: 2010's) \)
+
+							  </p>
+							  <p>
+								We also obtain a p-value <b>less than 0.001</b> for the coefficients of each one of these variables. This means
+								that, if the model's <b>assumptions</b> are complied with, we would be able to claim that
+								these variables have a <b>linear relationship</b> with popularity in the entire <b>population</b>
+								of rock songs on spotify released since 1970. So, we will plot the model's residuals
+								to find out if it is possible to make that conclusion. 
+							  </p>
+							  <p></p>
+								<img src="images2/residuals.png"  alt='residuals' class="image fit">
+							  <p>
+								From looking at these plots, we can say that our model <b>does not meet</b> the conditions of linear regression. 
+								We can see that some of the residuals follow a curve similar to a normal distribution, 
+								but there are many others with gather up around <b>negative fifty</b>. Also, there seem to be
+								more positive than negative residuals. Finally, the <b>variability</b> of the residuals
+								seems to change as we move along the x-axis of our plot on the left. 
+							  </p>
+							  <p>
+								Then, we can answer our research question. We <b>cannot claim</b> that there is 
+								a linear relationship between audio features and popularity of rock songs on
+								Spotify. This could mean that either the relationship between our variables and popularity
+								exists, but is not linear, or that there is no real relationship between them.
+							  </p>
+
+							  <h2>3. Conclusion</h2>
+
+							  <p>
+								In this report, we found that there is sufficient evidence to suggest that the mean popularity of rock songs
+								 from the seventies is not equal to the mean popularity of rock songs from the tewnty-twenties.Also, there is
+								  sufficient evidence to suggest that the proportion of rock songs from the seventies that make it to the Billboard
+								   Hot 100 is not equal to the proportion of rock songs from the tewnty-twenties that make it to the ranking. 
+								   There is an association between decade and whether a song is listed in the Billboard Hot 100 for all rock 
+								   songs on Spotify from the 1970's and the 2020's. This shows us how music taste has changed in time, 
+								   and how old rock music is still more popular than this decade's rock music.
+
+								   After that, we found that we cannot claim that there is a linear relationship between popularity and a song's characteristics. 
+								   This relates to our curiosity about the possibility of finding 
+								   how popular a song is going to be based merely on audio metrics. We now think that even if measures can give us an idea 
+								   of how a song will sound, there is something more profound that generates popularity and that we could not find in the 
+								   variables that we studied.
+							  </p>
+
+							  <p>
+								Link to the repository with the code: <a href = https://github.com/OmarPolC/SpotifyAnalysis target="_blank"> Spotify Analysis</a>
+							  </p>
+						</div>
+					</div>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/browser.min.js"></script>
+			<script src="assets2/js/breakpoints.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<script src="assets2/js/main.js"></script>
+		
+
+	</body>
+</html>
